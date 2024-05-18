@@ -68,12 +68,48 @@ export const Background = styled.div`
             margin-bottom: 1rem;
         }
 
-        div > #mensagem_erro {
+        div > #mensagem_erro_email {
             color: red;
             font-size: 16px;
             position: absolute;
             top: 13.2rem;
             right: 12rem;
+            width: fit-content;
+        }
+
+        div > #mensagem_erro_usuario {
+            color: red;
+            font-size: 16px;
+            position: absolute;
+            top: 16.9rem;
+            right: 8.7rem;
+            width: fit-content;
+        }
+
+        div > #mensagem_erro_hashtag {
+            color: red;
+            font-size: 16px;
+            position: absolute;
+            top: 20.5rem;
+            right: 8rem;
+            width: fit-content;
+        }
+
+        div > #mensagem_erro_senha{
+            color: red;
+            font-size: 16px;
+            position: absolute;
+            top: 24.1rem;
+            right: 10rem;
+            width: fit-content;
+        }
+
+        div > #mensagem_erro_senhas_iguais {
+            color: red;
+            font-size: 16px;
+            position: absolute;
+            top: 27.8rem;
+            right: 7.3rem;
             width: fit-content;
         }
 
@@ -85,6 +121,8 @@ export const Background = styled.div`
         label{
             margin-right: .7rem;
             margin-left: .7rem;
+            display: inline-block;
+            width: fit-content;
         }
         
 
