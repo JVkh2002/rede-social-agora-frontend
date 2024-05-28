@@ -7,11 +7,15 @@ const Login = () => {
     const navigate = useNavigate();
     const formRef = useRef(null);
     const loginRef = useRef(null);
+
     const [emailNovo, setEmailNovo] = useState(null);
     const [usuarioVazio, setUsuarioVazio] = useState(null);
     const [hashtagVazio, setHashtagVazio] = useState(null);
     const [senhaVazio, setSenhaVazio] = useState(null);
     const [senhasIguais, setSenhasIguais] = useState(null);
+
+    const [emailRegistrado, setEmailRegistrado] = useState(null);
+    const [senhaValida, setSenhaValida] = useState(null);
 
     const handleClickHome = () => {
         navigate('/home')
@@ -48,7 +52,8 @@ const Login = () => {
         });
     }}, []);
 
-    /*useEffect(() => {
+
+    useEffect(() => {
 
         if (loginRef.current) {
 
@@ -58,29 +63,29 @@ const Login = () => {
             let dadosDoFormulario = new FormData(this); // Cria um objeto FormData com os dados do formulário
         
             fetch('http://localhost:8080/verificarLogin', {
-                method: 'GET',
+                method: 'POST',
                 body: dadosDoFormulario
             })
             .then(response => response.json())
             .then(data => {
                 // Manipule os dados recebidos aqui
-                setEmailNovo(data.emailnovo);
-                setUsuarioVazio(data.usuarioVazio);
-                setHashtagVazio(data.hashtagVazio);
-                setSenhaVazio(data.senhaVazio);
-                setSenhasIguais(data.senhasIguais);
-                console.log(data);
+                setEmailRegistrado(data.emailRegistrado);
+                setSenhaValida(data.senhaValida);
             })
             .catch(error => {
                 // Manipule qualquer erro aqui
                 console.error('Erro:', error);
             });
+
         });
-    }}, []);*/
+    }}, []);
 
+    console.log(emailRegistrado)
+    console.log(senhaValida)
 
-
-    console.log(senhaVazio);
+    if (emailRegistrado && senhaValida) {
+        handleClickHome();
+    }
 
     //<button onClick={handleClickHome}>Entrar</button>
 
@@ -90,14 +95,20 @@ const Login = () => {
             <header>
                 <h1>Ágora</h1>
                 
-                <form ref={loginRef} action="http://localhost:8080/verificarLogin" method="GET">
+                <form id="formulario_login" ref={loginRef} action="http://localhost:8080/verificarLogin" method="POST">
                     <label>Email: </label>
+                    {emailRegistrado === false ? (
+                            <p id="login_email_invalido">Email não cadastrado</p>
+                        ) : null}
                     <input type='text' id="email" name="email"></input>
             
                     <label>Senha: </label>
+                    {senhaValida === false ? (
+                            <p id="login_senha_invalida">Senha inválida</p>
+                        ) : null}
                     <input type='text' id="senha" name="senha"></input> 
                     
-                    <button type="submit" value="Enviar">Entrar</button>
+                    <button type="submit" value="Enviar" > Entrar</button>
                 </form>
         
             </header>

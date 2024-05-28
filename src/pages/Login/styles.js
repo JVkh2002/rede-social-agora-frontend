@@ -36,6 +36,24 @@ export const Background = styled.div`
 
     }
 
+    form > #login_senha_invalida{
+        color: red;
+        display: inline-block;
+        position: absolute;
+        top: 2.3rem;
+        right: -3rem;
+        font-size: 16px;
+    }
+
+    form > #login_email_invalido {
+        color: red;
+        display: inline-block;
+        position: absolute;
+        top: 2.3rem;
+        left: 46.5rem;
+        font-size: 16px;
+    }
+
     display: flex;
 
     }
