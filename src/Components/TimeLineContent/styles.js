@@ -29,7 +29,7 @@ export const Content = styled.div`
 
     .userInfos > p{
         margin-top: 1.3rem;
-        margin-left: -8.2rem;
+        margin-left: -2.4rem;;
         color: gray;
     }
 

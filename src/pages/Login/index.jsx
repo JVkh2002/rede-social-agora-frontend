@@ -1,6 +1,9 @@
 import React, {useRef, useEffect, useState} from "react";
 import { Background } from './styles';
 import { useNavigate } from "react-router-dom";
+import { TimeLine } from "../../Components/TimeLine";
+
+export const NomeUsuarioContext = React.createContext();
 
 const Login = () => {
     
@@ -16,6 +19,8 @@ const Login = () => {
 
     const [emailRegistrado, setEmailRegistrado] = useState(null);
     const [senhaValida, setSenhaValida] = useState(null);
+    const [usuarioRegistrado, setUsuarioRegistrado] = useState(null);
+    const [hashtagRegistrada, sethashtagRegistrada] = useState(null);
 
     const handleClickHome = () => {
         navigate('/home')
@@ -71,6 +76,8 @@ const Login = () => {
                 // Manipule os dados recebidos aqui
                 setEmailRegistrado(data.emailRegistrado);
                 setSenhaValida(data.senhaValida);
+                setUsuarioRegistrado(data.usuarioRegistrado)
+                sethashtagRegistrada(data.hashtagRegistrada)
             })
             .catch(error => {
                 // Manipule qualquer erro aqui
@@ -80,14 +87,18 @@ const Login = () => {
         });
     }}, []);
 
+    const nomeUsuario = usuarioRegistrado;
+
     console.log(emailRegistrado)
     console.log(senhaValida)
+    console.log(usuarioRegistrado)
+    console.log(hashtagRegistrada)
+    console.log(nomeUsuario)
 
     if (emailRegistrado && senhaValida) {
         handleClickHome();
     }
 
-    //<button onClick={handleClickHome}>Entrar</button>
 
 
     return (
@@ -164,9 +175,15 @@ const Login = () => {
         
             <p>Ágora é uma rede social comprometida com o debate e a criação de novas ideais visando uma sociedade 
                 mais justa para todos.</p>*/
+
+        <NomeUsuarioContext.Provider value={nomeUsuario}>
+            <TimeLine/>
+        </NomeUsuarioContext.Provider>
         </Background>
+
     )
 }
+
 
 export { Login }
 
