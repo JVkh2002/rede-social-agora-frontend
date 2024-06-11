@@ -1,7 +1,6 @@
 import React, {useRef, useEffect, useState} from "react";
 import { Background } from './styles';
 import { useNavigate } from "react-router-dom";
-import { TimeLine } from "../../Components/TimeLine";
 
 export const NomeUsuarioContext = React.createContext();
 
@@ -176,9 +175,6 @@ const Login = () => {
             <p>Ágora é uma rede social comprometida com o debate e a criação de novas ideais visando uma sociedade 
                 mais justa para todos.</p>*/
 
-        <NomeUsuarioContext.Provider value={nomeUsuario}>
-            <TimeLine/>
-        </NomeUsuarioContext.Provider>
         </Background>
 
     )

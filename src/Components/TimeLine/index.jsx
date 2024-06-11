@@ -6,12 +6,12 @@ import { TimeLineContainer } from "./styles";
 
 const TimeLine = () => {
 
+    const conteudo = [{nomeUsuario: 'João', conteudo: 'Olá, mundo!'}, {nomeUsuario: 'Maria', conteudo: 'Olá joão!'}]
+
 
     const [postContainer, setPostContainer] = useState(false);
 
-    const [postagens, setPostagens] = useState([
-        {nomeUsuario: 'João', conteudo: 'Olá, mundo!'},
-    ]);
+    const [postagens, setPostagens] = useState(conteudo);
 
     const [novaPostagem, setNovaPostagem] = useState('');
 
@@ -25,6 +25,12 @@ const TimeLine = () => {
         setPostagens([...postagens, {nomeUsuario: 'Usuário', conteudo: novaPostagem}]);
         setNovaPostagem('');
         setPostContainer(false)
+    }; 
+
+    const handleRemover = (index) => {
+        const newPostagens = [...postagens];
+        newPostagens.splice(index, 1);
+        setPostagens(newPostagens);
     };
 
 
@@ -45,9 +51,11 @@ const TimeLine = () => {
             ) : null}
 
             
-            {postagens.map((postagem) => (
-                            <TimeLineContent {...postagem} />
-                        ))}
+            {postagens.map((postagem, index) => (
+                <div key={index}>
+                    <TimeLineContent {...postagem} handleRemover={() => handleRemover(index)}/>
+                </div>
+            ))}
                         
         </TimeLineContainer>
 

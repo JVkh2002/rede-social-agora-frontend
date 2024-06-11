@@ -33,6 +33,44 @@ export const Content = styled.div`
         color: gray;
     }
 
+    .userInfos > #editar_conteudo_pontos {
+        position: absolute;
+        left: 56rem;
+
+    }
+
+    .userInfos > #editar_conteudo_pontos:hover {
+        cursor: pointer;
+    }
+
+    .userInfos > #editar_conteudo{
+        border: 2px solid lightgray;
+        border-radius: 0.3rem;
+
+        position: relative;
+        top: 1rem;
+        left: 28rem;
+    }
+
+    
+    
+    .userInfos > #editar_conteudo > p{
+        padding: 0.1rem 0.3rem;
+        margin: 0;
+        margin-bottom: .1rem;
+        font-size: 16px;
+        
+        justify-content: center;
+        display: flex;
+    }
+        
+    .userInfos > #editar_conteudo > p:hover {
+        cursor: pointer;
+    }
+    .userInfos > #editar_conteudo > hr{
+        margin: 0;
+    }
+
     .content > p{
         margin-top: 0;
     }
